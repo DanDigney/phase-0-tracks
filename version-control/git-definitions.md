@@ -1,7 +1,4 @@
 # Git Definitions
-
-**Instructions: ** Define each of the following Git concepts.
-
 * What is version control?  Why is it useful?
 Version control is like a time line of your program. With it, you are able to go back, change, & review your code, while also being able to control what does & does not get put into the final version of your program.
 
