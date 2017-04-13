@@ -1,0 +1,22 @@
+#contact-info {
+	font-size: .8em;
+}
+
+.job {
+	background-color: #e9e5dc;
+	padding: .15em;
+	margin-top: 1em;
+}
+
+
+.list {
+	background-color: green;
+}
+
+p:first-letter {
+	font-size: 200%;
+}
+
+ul>li {
+	background-color: blue;
+}
