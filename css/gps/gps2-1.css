@@ -1,3 +1,22 @@
-body {
-	background-color: red;
+header{
+ 	margin:10px;
+ 	padding: 10px 10px 10px 10px;
+ 	position: relative;
+ 	background-color: green;
+}
+footer{
+ margin:10px;
+ 	padding: 10px 10px 10px 10px;
+ 	position: relative;
+ 	background-color: green;
+}
+.column-1{
+ display: inline-block;
+ width:45%;
+ padding: 10px;
+}
+.column-2{
+ display: inline-block;
+ width:45%;
+ padding: 10px;
 }
