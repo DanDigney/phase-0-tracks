@@ -1,22 +1,32 @@
-header{
- 	margin:10px;
- 	padding: 10px 10px 10px 10px;
+* {
+	max-width: 90%;
+}
+body {
+	background-image: url("css.png");
+	margin: 1% auto;
+}
+header, footer{
+ 	padding: 2.5%;
  	position: relative;
  	background-color: green;
+
 }
-footer{
- margin:10px;
- 	padding: 10px 10px 10px 10px;
- 	position: relative;
- 	background-color: green;
+section {
+	margin: 1%;
+	display: table-cell;
+	width:40%;
+	padding: 20px;
+	background-color: orange;
 }
-.column-1{
- display: inline-block;
- width:45%;
- padding: 10px;
+.column-2 {
+	background-color: blue;
 }
-.column-2{
- display: inline-block;
- width:45%;
- padding: 10px;
+h2 {
+	font-family: "Papyrus", Fantasy;
+}
+footer {
+	clear: both;
+}
+article:nth-child(odd) {
+  background-color: pink;
 }
