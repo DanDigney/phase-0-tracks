@@ -1,0 +1,30 @@
+- once the doors to the elevator open, enter the elevator
+- if there is anyone there
+	- audibly ask "What floor would you like to go to"
+	-listen for an input three times
+	- if you are unable to register a floor number 
+		-announce you are unable to register input
+		- stand in the corner furthest away from the control panel & wait for maintenance
+	- if able to register floor number
+		- align your weird robot body with the control panel
+		- reach out & use your robot appendage to find the numbered button on the control panel that corresponds with the registered floor number you received
+		- once the button is found
+			-firmly apply pressure until the light is activated
+- if no one is there
+	- align yourself in front of the control panel, as far back in the elevator as possible, for future use
+	- wait for someone to enter
+	-try to get their input (line 3-12)
+
+- dry off
+- stand in front of you closet door for a couple of minutes to stall more
+- finally open the doors
+- scan the clothes
+	-compare them to knowledge of weather
+- take out selected clothing
+	- put on boxers
+	- put on pants
+		- look in mirror
+			- shoot finger guns
+	- put on deodorant
+	- put on shirt
+- put towel in hamper
