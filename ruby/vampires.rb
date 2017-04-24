@@ -1,19 +1,3 @@
-=begin
-
-if name == "Drake Cula" || name == "Tu Fang"
-	p "Definitely a vampire."
-elsif (!correct_age && !bread) || (!correct_age && !health)
-	p "Probably a vampire."
-elsif (correct_age && bread && health)
-	p "Almost certainly a vampire."
-elsif (correct_age && bread) || (correct_age && health)
-	p "Probably not a vampire."
-else
-	p "Results inconclusive."
-end
-
-=end
-
 puts "How many employees?"
 goal = gets.chomp.to_i
 counter = 0
@@ -65,3 +49,4 @@ while counter < goal
 	end
 	counter += 1
 end
+p "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
