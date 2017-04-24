@@ -74,9 +74,28 @@ def decrypt(user_input)
   end
 end
 
-encrypt("abc")
-encrypt("zed")
-decrypt("bcd")
-decrypt("afe")
+# encrypt("abc")
+# encrypt("zed")
+# decrypt("bcd")
+# decrypt("afe")
 # this next one works because the original value is changed
-decrypt(encrypt("swordfish"))
+# decrypt(encrypt("swordfish"))
+
+# ask which one
+puts "Would you like to encrypt or decrypt? (e/d)"
+service = gets.chomp.downcase
+
+# get code
+puts "What word?"
+old_word = gets.chomp
+
+# finish it up
+if service == "encrypt" || service == "e"
+  new_word = encrypt(old_word)
+  print new_word
+elsif service == "decrypt" || service == "d"
+  new_word = decrypt(old_word)
+  print new_word
+else
+  puts "The input you have entered is incorrect"
+end
