@@ -73,3 +73,10 @@ def decrypt(user_input)
     counter += 1 
   end
 end
+
+encrypt("abc")
+encrypt("zed")
+decrypt("bcd")
+decrypt("afe")
+# this next one works because the original value is changed
+decrypt(encrypt("swordfish"))
