@@ -27,7 +27,7 @@ changes = gets.chomp.to_sym
 if changes == :none
 	print "You have selected: No Changes."
 else
-	puts "Enter the new value for #{changes}."
+	puts "Enter the new value for :#{changes}."
 	new_value = gets.chomp
 	user_information[changes] = new_value
 end
