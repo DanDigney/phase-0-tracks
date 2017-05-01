@@ -4,19 +4,19 @@ take string, split/ convert to array, isolate vowels
 advance vowels, isolate consonants, advance
 join, swap, capitalize 
 =end
-
 consonant_string = "bcdfghjklmnpqrstvwxyz"
 vowel_string = "aeiou"
 consonants = consonant_string.split('')
 vowels = vowel_string.split('')
-new_name = []
+name = {}
+holder = []
 
 puts "Enter a name, else type 'quit'."
 input = gets.chomp.downcase
+name["#{input}"]
 
-until input == 'quit'
-	string = input.split(' ').rotate.join(' ')
-	array = string.split('')
+until input == "quit"
+	array = input.split('')
 	array.each do |x|
 	  if vowels.index(x)  
 	    changed_letter = vowels[ (vowels.index(x).to_i) +1]
@@ -31,9 +31,15 @@ until input == 'quit'
 	  else 
 	    changed_letter = x
 	  end
-	  new_name << changed_letter
+	  holder << changed_letter
+	  name["#{input}"] = holder.join('').split(' ').map! { |i| i.capitalize! }.rotate.join(' ')
 	end
-	puts "Your original name is #{input}, your new name is #{new_name.join}"
+	holder.clear
 	puts "Enter a name, else type 'quit'."
 	input = gets.chomp.downcase
+	name["#{input}"]
+end
+
+name.each do |x, y|
+  puts "#{y} was originally #{x}."
 end
