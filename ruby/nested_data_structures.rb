@@ -74,4 +74,4 @@ most_populated_states = {
 p most_populated_states[:california]
 p most_populated_states[:texas][:population]
 p most_populated_states[:new_york][:most_populated_cities]
-p most_populated_states[:illinois][:population_of_cities][:chicago]
+p most_populated_states[:illinois][:population_of_cities][:rockford]
