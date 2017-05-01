@@ -4,10 +4,8 @@ take string, split/ convert to array, isolate vowels
 advance vowels, isolate consonants, advance
 join, swap, capitalize 
 =end
-consonant_string = "bcdfghjklmnpqrstvwxyz"
-vowel_string = "aeiou"
-consonants = consonant_string.split('')
-vowels = vowel_string.split('')
+consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+vowels = ["a", "e", "i", "o", "u"]
 name = {}
 holder = []
 
