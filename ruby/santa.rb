@@ -42,16 +42,23 @@ p santa.gender
 santa.gender = "dolphin"
 p santa.gender
 
-# santas = []
-# example_genders = ["agender", "female", "bigender", "male", 
-# 	"female", "gender fluid", "N/A"]
-# example_ethnicities = ["black", "Latino", "white", 
-# 	"Japanese-African", "prefer not to say", 
-# 	"Mystical Creature (unicorn)", "N/A"]
-# example_genders.length.times do |i|
-#   santas << Santa.new(example_genders[i], example_ethnicities[i])
-# end
-# santas.each do |x|
-# 	x.speak
-# end
+santas = []
+example_genders = ["agender", "female", "bigender", "male", 
+	"female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", 
+	"Japanese-African", "prefer not to say", 
+	"Mystical Creature (unicorn)", "N/A"]
+
+example_genders.length.upto(107) do |i|
+  santas << Santa.new(example_genders.sample, example_ethnicities.sample)
+end
+
+puts santas
+
+counter = 0
+santas.each do |x|
+	puts "Santa#{counter} is a/an #{x.gender} #{x.ethnicity}, age #{}"
+	counter += 1
+end
+
 
