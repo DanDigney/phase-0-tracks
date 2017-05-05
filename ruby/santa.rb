@@ -1,4 +1,6 @@
 class Santa
+	attr_reader :age, :ethnicity, :reindeer_ranking
+	attr_accessor :gender
 	def initialize(sex, race)
 		puts "Initializing Santa instance..."
 		@gender = sex
@@ -18,32 +20,27 @@ class Santa
 		@age = @age + 1
 	end
 	def get_mad_at(reindeer_name)
-		@reindeer_ranking.last = reindeer_name
-	end
-	def gndr
-		p @gender
-	end
-	def gender=(new_gender)
-		@gender = new_gender
-	end
-	def age
-		p @age
-	end
-	def ethnicity
-		p @ethnicity
+		@reindeer_ranking.delete(reindeer_name)
+		@reindeer_ranking.insert(-1, reindeer_name)
 	end
 end
 
 santa = Santa.new("male", "asian")
-santa.speak
 santa.eat_milk_n_cookies("cookie")
-santa.age
+
+p santa.reindeer_ranking
+santa.get_mad_at("Vixen")
+p santa.reindeer_ranking
+
+p santa.age
 santa.celebrate_birthday
-santa.age
-santa.ethnicity
-santa.gndr 
+p santa.age
+
+p santa.ethnicity
+
+p santa.gender 
 santa.gender = "dolphin"
-santa.gndr
+p santa.gender
 
 # santas = []
 # example_genders = ["agender", "female", "bigender", "male", 
