@@ -27,7 +27,7 @@
 # output:
 
 def create_list
-  puts 'Please enter your grossary list, items should be separated by space'
+  puts 'Please enter your grocery list, separate via space.'
   items = gets.chomp.split(' ')
   grossary_list  = {}
   index = 0 
@@ -41,7 +41,7 @@ end
 def item_and_qty (list)
   items  = ''
   until items == 'quit'
-    puts "enter an item and its qty separated by space, or quit"
+    puts "Type 'quit', on enter an item to adjust, with it's new amount."
     items = gets.chomp
     if items != 'quit'
       new_item = items.split(' ')
@@ -77,7 +77,7 @@ def delete_item (list)
 end
   
 def print_list(list)
-  puts 'This is your groucery list:'
+  puts 'This is your grocery list:'
   list.each {|item, qty| puts "#{qty} of #{item}"}
 end
   
