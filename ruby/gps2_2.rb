@@ -26,17 +26,6 @@
 # steps:
 # output:
 
-gros_list = {
-	pear: 3
-	apple: 6
-}
-
-def list_maker
-	puts "shit"
-	input= gets.chomp.split(' ')
-
-	until  counter == input.length 
-
 def create_list
   puts 'Please enter your grossary list, items should be separated by space'
   items = gets.chomp.split(' ')
