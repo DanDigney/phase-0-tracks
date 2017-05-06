@@ -55,9 +55,10 @@ end
 
 puts santas
 
+
 counter = 0
 santas.each do |x|
-	puts "Santa#{counter} is a/an #{x.gender} #{x.ethnicity}, age #{}"
+	puts "Santa#{counter} is a/an #{x.gender} #{x.ethnicity}, age #{x.age+counter*4/3}."
 	counter += 1
 end
 
