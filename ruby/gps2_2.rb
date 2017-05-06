@@ -1,71 +1,38 @@
-# Method to create a list
-# input: string of items separated by spaces (example: "carrots apples cereal pizza")
-# steps: 
-  # [fill in any steps here]
-  # set default quantity
-  # print the list to the console [can you use one of your other methods here?]
-# output: [what data type goes here, array or hash?]
-
-# Method to add an item to a list
-# input: list, item name, and optional quantity
-# steps:
-# output:
-
-# Method to remove an item from the list
-# input:
-# steps:
-# output:
-
-# Method to update the quantity of an item
-# input:
-# steps:
-# output:
-
-# Method to print a list and make it look pretty
-# input:
-# steps:
-# output:
-
 def create_list
-  puts 'Please enter your grocery list, separate via space.'
+  puts 'Please enter your grocery list, separate items via space.'
   items = gets.chomp.split(' ')
-  grossary_list  = {}
+  grocery_list  = {}
   index = 0 
-  until items.length == index
-    grossary_list[items[index]] = 1 
+  until index == items.length
+    grocery_list[items[index]] = 1 
     index += 1
   end
-  grossary_list
+  grocery_list
 end
 
-def item_and_qty (list)
+def add_item (list)
   items  = ''
   until items == 'quit'
-    puts "Type 'quit', on enter an item to adjust, with it's new amount."
+    puts "Enter a new item & amount, or type 'quit'."
     items = gets.chomp
     if items != 'quit'
       new_item = items.split(' ')
-      list[new_item[0]]  = new_item[1]
-    else
-      break
+      if new_item.length > 2
+        qty = new_item[-1]
+        new_item.delete_at(-1)
+        list[new_item.join(' ')] = qty
+      else
+        list[new_item[0]]  = new_item[-1]
+      end
     end
   end
-list
+  list
 end
 
-def add_qty(list)
-  new_list = {}
-  list.each do |item , qty|
-      puts "How many items from #{item} do wou wanna buy?" 
-      new_list[item]  = gets.chomp
-    end
-    new_list
-  end
-  
 def delete_item (list)
   item  = ''
   until item  == 'quit'
-    puts "Which item you want to delete, if no then type quit"
+    puts "Enter the item you'd like to delete, else type 'quit'."
     item  = gets.chomp
     if item != 'quit'
       list.delete(item)
@@ -75,11 +42,49 @@ def delete_item (list)
   end
   list
 end
-  
+
+
+def set_qty(list)
+  new_list = {}
+  list.each do |item , qty|
+    puts "How many #{item} would you like?" 
+    new_list[item]  = gets.chomp
+  end
+  new_list
+end
+
 def print_list(list)
   puts 'This is your grocery list:'
-  list.each {|item, qty| puts "#{qty} of #{item}"}
+  list.each {|item, qty| puts "#{qty} - #{item}"}
 end
   
 
-print_list(create_list)
+print_list(set_qty(delete_item(add_item(create_list))))
+
+# REFLECTION
+=begin 
+1) That pseduocoding helps break down the work load of a multi-step 
+process.
+2) I feel like hashes are much better at storing data in an intuitive
+way, but I also feel like it's much easier to manipulate the data
+within an array.
+3) Nothing, unless you have it's value placed at the end - then the
+end value.
+4) Anything
+5) By having the end value relate to something outside of the method.
+6) How to manipulate information within a hash.
+=end
+
+# PSUEDOCODE
+=begin 
+make a list
+  unlimited items
+  user input
+add items
+  multi-word
+  with value
+delete items
+  remove value as well
+update item values
+print list
+=end
