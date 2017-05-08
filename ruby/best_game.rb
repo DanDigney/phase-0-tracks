@@ -38,7 +38,7 @@ until game.try_counter > game.word.length
 	  puts "Duplicate word: No penalty."
 	else
     game.storage << guess
-    
+
     until game.letter_counter > game.word.length
   		if game.counter == game.word.length
   		  game.counter = 0 
@@ -60,3 +60,55 @@ until game.try_counter > game.word.length
     game.matches.clear
 	end
 end
+
+
+# Pseudocode
+
+=begin
+user 1 enter string
+user 2 guesses string (limit: string.length)
+	repeated guesses dont take a limit
+constant upadate
+fill in any correct letters to string
+congrats on win, u suk on lose
+
+
+Enter a string
+
+Guess a word or letter
+.split(' ') compare, update if needed
+
+until out of guesses
+
+class
+
+puts "Welcome to the game, please enter the word"
+input = gets.chomp
+game = BestGame.new(input)
+
+ptus "hiding word"
+@new_word = @word.split
+
+puts "Player 2, guess"
+input2 = gets.chomp.split(' ')
+
+while gueses < @word.length
+
+
+compare input2 to @word/input, fill in matching letters
+
+
+completely new array, with dashes for length, fills in via index
+p @attempt
+
+.compare
+
+input.length.times each do x
+if input[x] is equal to word[0..x]
+
+fill in input[x] at matched index
+=end
+
+# Most of the time when I wanna think I walk away from
+# the computer, so the majority of my notes are chicken
+# scratch on paper
