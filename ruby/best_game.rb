@@ -8,7 +8,7 @@ class BestGame
 		@counter = 0
 		@letter_counter = 0
 		@try_counter = 0
-		@storage = ["the", "fuck"]
+		@storage = [" "]
 	end
 
 	def correct(guessed_word)
