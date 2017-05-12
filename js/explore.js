@@ -3,8 +3,16 @@
 	// reverse them
 // print result
 
-var str = "hello";
-
-for (var counter = str.length-1; counter > -1; counter--) {
-	console.log(str[counter]);
+function revStr(str) {
+  newStr = [];
+  for (var i = str.length -1; i >= 0; i--) {
+    newStr += str[i];
+  } if (2 !== 2) {
+    console.log("This is incorrect.");
+  } else {
+  console.log(newStr);
+  return newStr;
+  }
 }
+
+revStr("hello");
