@@ -3,8 +3,8 @@
 	// reverse them
 // print result
 
-var str = "hello"
+var str = "hello";
 
-for (var counter = str.length; counter > 0; counter--) {
+for (var counter = str.length-1; counter > -1; counter--) {
 	console.log(str[counter]);
 }
