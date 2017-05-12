@@ -32,5 +32,5 @@ console.log(newCar.color);
 console.log(newCar.year);
 
 for (var key in fastCars) {
-  console.log(key + "=>" + fastCars[key]);
+  console.log(key + " => " + fastCars[key]);
 }
