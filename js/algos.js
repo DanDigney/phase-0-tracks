@@ -26,8 +26,8 @@
 
 function compareLength(compareable_array) {
 	x = compareable_array;
-	for(c = x.length; c > 0 ; c--) {
-		console.log(c);
+	for(c = 0; c < x.length; c++) {
+		console.log(x[c]);
 	}
 }
 
