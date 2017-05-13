@@ -39,3 +39,24 @@ function compareLength(compareable_array) {
 var y = ["long phrase", "longer phrase", "longest phrase"];
 
 compareLength(y);
+
+function compareValues(object_one, object_two) {
+	x = object_one;
+	y = object_two;
+	this.propOne = Object.keys(x);
+	this.propTwo = Object.keys(y);
+	for(c = 0; c < propOne.length; c++) {
+		console.log("fuck");
+		if(propOne[c] === propTwo[c] ||
+			propOne[c] === propTwo[c-1]) {
+			console.log("shit");
+		}
+	}
+	console.log(propOne);
+	console.log(propTwo);
+}
+
+var a = {name: "bill", age: 25};
+var b = {age: "dog", animal: 4};
+
+compareValues(a, b)
