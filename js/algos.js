@@ -27,10 +27,15 @@
 function compareLength(compareable_array) {
 	x = compareable_array;
 	for(c = 0; c < x.length; c++) {
-		console.log(x[c]);
+		if(x[c].length > x[0].length) {
+			var hidden = x[0];
+			x[0] = x[c];
+			x[c] = hidden;
+		}
 	}
+	console.log(x[0])
 }
 
-var y = ["apple", "banana", "cashew"];
+var y = ["long phrase", "longer phrase", "longest phrase"];
 
 compareLength(y);
