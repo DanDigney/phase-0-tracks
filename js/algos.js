@@ -54,8 +54,8 @@ function compareValues(object_one, object_two) {
 		} else if(propOne == undefined) {
 			console.log("shit")
 			console.log("false");
-		} else {
-			i += 1;
+		} else if(propTwo[i] === propOne[c]) {
+			i -= 1;
 			console.log("ass");
 		}
 	}
