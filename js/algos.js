@@ -41,15 +41,22 @@ var y = ["long phrase", "longer phrase", "longest phrase"];
 compareLength(y);
 
 function compareValues(object_one, object_two) {
-	x = object_one;
-	y = object_two;
+	var x = object_one;
+	var y = object_two;
 	this.propOne = Object.keys(x);
 	this.propTwo = Object.keys(y);
+	var i = propOne.length;
 	for(c = 0; c < propOne.length; c++) {
 		console.log("fuck");
-		if(propOne[c] === propTwo[c] ||
-			propOne[c] === propTwo[c-1]) {
-			console.log("shit");
+		if(propOne[i] === propTwo[c]) {
+			console.log("balls")
+			console.log("true");
+		} else if(propOne == undefined) {
+			console.log("shit")
+			console.log("false");
+		} else {
+			i += 1;
+			console.log("ass");
 		}
 	}
 	console.log(propOne);
