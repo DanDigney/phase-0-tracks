@@ -65,3 +65,17 @@ function compareValues(a, b) {
 }
 
 console.log(compareValues(a, b));
+
+function randomString(number) {
+	var holder = [0, 1, 2];
+	var alphabet = "abcdefghijklmnopqrstuvwxyz";
+	for(i = 0; i < number; i++) {
+		console.log("shit");
+		for(c = 0; c < Math.floor((Math.random() * 10) + 1); c++) {
+			holder[i] = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+		}
+	}
+	console.log(holder);
+}
+
+randomString(3);
