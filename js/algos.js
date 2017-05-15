@@ -40,30 +40,45 @@ var y = ["long phrase", "longer phrase", "longest phrase"];
 
 compareLength(y);
 
-function compareValues(object_one, object_two) {
-	var x = object_one;
-	var y = object_two;
-	this.propOne = Object.keys(x);
-	this.propTwo = Object.keys(y);
-	var i = propOne.length;
-	for(c = 0; c < propOne.length; c++) {
-		console.log("fuck");
-		if(propOne[i] === propTwo[c]) {
-			console.log("balls")
+// function compareValues(object_one, object_two) {
+// 	var x = object_one;
+// 	var y = object_two;
+// 	this.propx = Object.keys(x);
+// 	this.propy = Object.keys(y);
+// 	var i = propx.length;
+// 	for(c = 0; c < propx.length; c++) {
+// 		console.log("fuck");
+// 		if(propx[i] === propy[c]) {
+// 			console.log("balls")
+// 			console.log("true");
+// 		} else if(propx == undefined) {
+// 			console.log("shit")
+// 			console.log("false");
+// 		} else if(propy[i] !== propx[c]) {
+// 			i -= 1;
+// 			console.log("ass");
+// 		} else {
+// 			console.log("super");
+// 			i -= 1;
+// 		}
+// 	}
+// 	console.log(propx);
+// 	console.log(propy);
+// }
+
+var a = {name: "bill", hair: "red", age: 25};
+var b = {animal: "dog", age: 4};
+
+function compareV(a, b) {
+	this.aa = Object.keys(a);
+	this.bb = Object.keys(b);
+	for(c = 0; c < aa.length +1; c++) {
+		if(aa[c] == bb[c -1] || bb[c] == aa[c -1]) {
 			console.log("true");
-		} else if(propOne == undefined) {
-			console.log("shit")
+		} else {
 			console.log("false");
-		} else if(propTwo[i] === propOne[c]) {
-			i -= 1;
-			console.log("ass");
 		}
 	}
-	console.log(propOne);
-	console.log(propTwo);
 }
 
-var a = {name: "bill", age: 25};
-var b = {age: "dog", animal: 4};
-
-compareValues(a, b)
+compareV(a, b);
