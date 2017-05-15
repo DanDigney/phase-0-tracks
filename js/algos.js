@@ -40,7 +40,7 @@ var y = ["long phrase", "longer phrase", "longest phrase"];
 
 compareLength(y);
 
-var a = {name: "bill", hair: "red", type: "ass", animal: 25};
+var a = {name: "bill", hair: "red", age: 25};
 var b = {animal: "dog", age: 4};
 
 function compareValues(a, b) {
@@ -67,12 +67,15 @@ function compareValues(a, b) {
 console.log(compareValues(a, b));
 
 function randomString(number) {
-	var holder = [];
+	var holder = [""] * number;
 	var alphabet = "abcdefghijklmnopqrstuvwxyz";
 	for(i = 0; i < number; i++) {
 		for(c = 0; c < Math.floor((Math.random() * 10) + 1); c++) {
 			holder[i] += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 		}
 	}
+	console.log(holder);
+}
 
 randomString(3);
+
