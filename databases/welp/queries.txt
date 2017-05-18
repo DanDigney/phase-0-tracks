@@ -1,0 +1,23 @@
+8.4 Many to many
+RELEASE 2
+
+2). You've joined two tables before. How do you join three?
+
+select * from ((reviews join businesses on reviews.business_id = businesses.id) join users on reviews.user_id = users.id);
+
+1|3|hey!!!|1|2|2|Amir's Towing|1|Bradford|Pitt
+2|1|wow|3|2|2|Amir's Towing|3|Angela|Jolie
+
+3.) There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+select users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment from ((reviews join businesses on reviews.business_id = businesses.id) join users on reviews.user_id = users.id);
+
+Bradford|Pitt|Amir's Towing|3|hey!!!
+Angela|Jolie|Amir's Towing|1|wow
+
+4). How do you view the data of all three tables for just one particular business?
+
+select * from ((reviews join businesses on reviews.business_id = businesses.id) join users on reviews.user_id = users.id) where businesses.name ="Amir's Towing";
+
+1|3|hey!!!|1|2|2|Amir's Towing|1|Bradford|Pitt
+2|1|wow|3|2|2|Amir's Towing|3|Angela|Jolie
