@@ -77,6 +77,7 @@ def show_return(db)
 	db.execute("SELECT state_name FROM return_map")
 end
 
+# START OF PROGRAM
 
 puts "This program does not handle user error."
 puts "This program assumes correct spelling."
@@ -136,7 +137,7 @@ if question == 'yes'
 				elsif question == 5
 					break		
 				else
-					puts "Invalid"
+					puts "Invalid."
 				end
 			end
 		elsif question == 'update'
@@ -148,21 +149,21 @@ if question == 'yes'
 				puts "4: Exit. (Only way to leave)"
 				question = gets.chomp
 				if question.to_i == 1
-					puts "Update your visited states."
+					puts "Add a state you've visited."
 					question = gets.chomp.downcase.capitalize!
 					update_visited(question, db)
 				elsif question.to_i == 2
-					puts "Update the states you want to visit."
+					puts "Add a state you'd like to visit."
 					question = gets.chomp.downcase.capitalize!
 					update_wanted(question, db)
 				elsif question.to_i == 3
-					puts "Update the states you want to revisit."
+					puts "Add a state you'd like to revisit."
 					question = gets.chomp.downcase.capitalize!
 					update_return(question, db)
 				elsif question.to_i == 4
 					break
 				else
-					puts "Invalid"
+					puts "Invalid."
 				end
 			end
 		else
