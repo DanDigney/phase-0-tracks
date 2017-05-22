@@ -68,10 +68,17 @@ puts "Is this a new map, or would you like to reset your data?"
 fresh_start = gets.chomp.downcase
 if fresh_start == 'yes'
 	# Drop the old tables
-	db.execute(DROP TABLE default_map)
-	db.execute(DROP TABLE visited_map)
-	db.execute(DROP TABLE wanted_map)
-	db.execute(DROP TABLE return_map)
+	# Mild problem here: if this a genuine first run
+	# An error occurs because it can't delete data that
+	# Isn't there, so I've add their calls
+	db.execute(make_default_table)
+	db.execute(make_visited_table)
+	db.execute(make_return_table)
+	db.execute(make_wanted_table)
+	db.execute("DROP TABLE default_map")
+	db.execute("DROP TABLE visited_map")
+	db.execute("DROP TABLE wanted_map")
+	db.execute("DROP TABLE return_map")
 	# Create & populate the default table
 	db.execute(make_default_table)
 	populate_default_map(states_array, db)
@@ -96,67 +103,78 @@ puts "You've visited:"
 show_visited_map.each do |x|
 	p x 
 end
-# Ask what's next
-puts "Would you like to update or view your map?"
+# Ask if they wanna do anything
+puts "Would you like to update or view your map? (Yes or No)"
 question = gets.chomp.downcase
-if question != 'yes'
-	puts "Alright, later."
-	break
-else
-	puts "View or update?"
-	answer = gets.chomp.downcase
-	if answer == 'view'
-		puts "View: (Enter number)"
-		puts "1: States you've visited."
-		puts "2: States you want to visit."
-		puts "3: States you want to revisit."
-		puts "4: States you've never visited."
-		view_answer = gets.chomp.to_i
-		if view_answer == 1
-		show_visited_map.each do |x|
-			p x 
-		end
-		elsif view_answer == 2
-		show_wanted_map.each do |x|
-			p x 
-		end
-		elsif view_answer == 3
-		show_return_map.each do |x|
-			p x 
-		end
-		elsif view_answer == 4
-		show_default_map.each do |x|
-			p x 
-		end			
+if question == 'yes'
+	# Create loop
+	until question == 'done'
+		puts "View, update, or done?"
+		question = gets.chomp.downcase
+		# Create loop options
+		if question == 'view'
+			puts "View: (Enter number)"
+			puts "1: States you've visited."
+			puts "2: States you want to visit."
+			puts "3: States you want to revisit."
+			puts "4: States you've never visited."
+			view_answer = gets.chomp.to_i
+			if view_answer == 1
+			show_visited_map.each do |x|
+				p x 
+			end
+			elsif view_answer == 2
+			show_wanted_map.each do |x|
+				p x 
+			end
+			elsif view_answer == 3
+			show_return_map.each do |x|
+				p x 
+			end
+			elsif view_answer == 4
+			show_default_map.each do |x|
+				p x 
+			end			
+			else
+				puts "Invalid"
+			end
+		elsif question == 'update'
+			puts "Update: (Enter number)"
+			puts "1: Visited."
+			puts "2: Want to Visit."
+			puts "3: Want to Revisit."
+			update_answer = gets.chomp.to_i
+			if update_answer == 1
+				until update_answer == 'Done'
+					puts "One state at a time: update your visited states."
+					puts "Type 'done' to quit."
+					update_answer = gets.chomp.downcase.capitalize!
+					update_visited(update_answer, db)
+				end
+			elsif update_answer == 2
+				until update_answer == 'Done'
+					puts "One state at a time: update the states you want to visit."
+					puts "Type 'done' to quit."
+					update_answer = gets.chomp.downcase.capitalize!
+					update_wanted(update_answer, db)
+				end
+			elsif update_answer == 3
+				until update_answer == 'Done'
+					puts "One state at a time: update the states you want to revisit."
+					puts "Type 'done' to quit."
+					update_answer = gets.chomp.downcase.capitalize!
+					update_return(update_answer, db)
+				end
+			else update_answer == 4
+				puts "Invalid"
+			end
 		else
-			break
+			puts "Type done if you'd like to exit."
 		end
-	elsif answer == 'update'
-		puts "Update: (Enter number)"
-		puts "1: Visited."
-		puts "2: Want to Visit."
-		puts "3: Want to Revisit."
-		update_answer = gets.chomp.to_i
-		if update_answer == 1
-			puts ""
-		elsif update_answer == 2
-		elsif update_answer == 3
-		else
-			break
-		end
-	else
-		break
 	end
 end
 
-# puts "One at a time, what states have you visited?"
-# y = gets.chomp
-# update_visited(y)
-
-# puts "What states would you like to see again?"
-# z = gets.chomp
-# update_return(z)
-
+puts "Goodbye."
 # puts <<-TEXT
 # You've been to #{db.execute(SELECT state_name FROM visited_map)},
 # would like to revisit #{db.execute(SELECT state_name FROM return_map)},
