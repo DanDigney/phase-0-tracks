@@ -61,6 +61,22 @@ def update_return(states_name, db)
 	db.execute("INSERT INTO return_map (state_name) VALUES (?)", [states_name])
 end
 
+def show_default(db)
+	db.execute("SELECT state_name FROM default_map")
+end
+
+def show_visited(db)
+	db.execute("SELECT state_name FROM visited_map")
+end
+
+def show_wanted(db)
+	db.execute("SELECT state_name FROM wanted_map")
+end
+
+def show_return(db)
+	db.execute("SELECT state_name FROM return_map")
+end
+
 # Programing flaw, but it's assumed the user is aware of limits
 puts "This program requires correctly spelled state names."
 # Will result in an error if there is no previous data
@@ -93,16 +109,6 @@ if fresh_start == 'yes'
 	db.execute(make_wanted_table)
 end
 
-show_visited_map = db.execute("SELECT state_name FROM visited_map")
-show_wanted_map = db.execute("SELECT state_name FROM wanted_map")
-show_return_map = db.execute("SELECT state_name FROM return_map")
-show_default_map = db.execute("SELECT state_name FROM default_map")
-
-# Show the visited table
-puts "You've visited:"
-show_visited_map.each do |x|
-	p x 
-end
 # Ask if they wanna do anything
 puts "Would you like to update or view your map? (Yes or No)"
 question = gets.chomp.downcase
@@ -113,70 +119,69 @@ if question == 'yes'
 		question = gets.chomp.downcase
 		# Create loop options
 		if question == 'view'
-			puts "View: (Enter number)"
-			puts "1: States you've visited."
-			puts "2: States you want to visit."
-			puts "3: States you want to revisit."
-			puts "4: States you've never visited."
-			view_answer = gets.chomp.to_i
-			if view_answer == 1
-			show_visited_map.each do |x|
-				p x 
-			end
-			elsif view_answer == 2
-			show_wanted_map.each do |x|
-				p x 
-			end
-			elsif view_answer == 3
-			show_return_map.each do |x|
-				p x 
-			end
-			elsif view_answer == 4
-			show_default_map.each do |x|
-				p x 
-			end			
-			else
-				puts "Invalid"
+			until question == 5
+				show_visited_map = db.execute("SELECT state_name FROM visited_map")
+				show_wanted_map = db.execute("SELECT state_name FROM wanted_map")
+				show_return_map = db.execute("SELECT state_name FROM return_map")
+				show_default_map = db.execute("SELECT state_name FROM default_map")
+				puts "View: (Enter number)"
+				puts "1: States you've visited."
+				puts "2: States you want to visit."
+				puts "3: States you want to revisit."
+				puts "4: States you've never visited."
+				puts "5: Exit (Only way to leave)"
+				question = gets.chomp.to_i
+				if question == 1
+					puts show_visited(db)
+				elsif question == 2
+					puts show_wanted(db)
+				elsif question == 3
+					puts show_return(db)
+				elsif question == 4
+					puts show_default(db)
+				elsif question == 5
+					break		
+				else
+					puts "Invalid"
+				end
 			end
 		elsif question == 'update'
-			puts "Update: (Enter number)"
-			puts "1: Visited."
-			puts "2: Want to Visit."
-			puts "3: Want to Revisit."
-			update_answer = gets.chomp.to_i
-			if update_answer == 1
-				until update_answer == 'Done'
-					puts "One state at a time: update your visited states."
-					puts "Type 'done' to quit."
-					update_answer = gets.chomp.downcase.capitalize!
-					update_visited(update_answer, db)
+			until question == 'Done'
+				puts "Update: (Enter number)"
+				puts "1: Visited."
+				puts "2: Want to Visit."
+				puts "3: Want to Revisit."
+				puts "4: Exit. (Only way to leave)"
+				question = gets.chomp
+				if question.to_i == 1
+					puts "Update your visited states."
+					question = gets.chomp.downcase.capitalize!
+					update_visited(question, db)
+				elsif question.to_i == 2
+					puts "Update the states you want to visit."
+					question = gets.chomp.downcase.capitalize!
+					update_wanted(question, db)
+				elsif question.to_i == 3
+					puts "Update the states you want to revisit."
+					question = gets.chomp.downcase.capitalize!
+					update_return(question, db)
+				elsif question.to_i == 4
+					break
+				else
+					puts "Invalid"
 				end
-			elsif update_answer == 2
-				until update_answer == 'Done'
-					puts "One state at a time: update the states you want to visit."
-					puts "Type 'done' to quit."
-					update_answer = gets.chomp.downcase.capitalize!
-					update_wanted(update_answer, db)
-				end
-			elsif update_answer == 3
-				until update_answer == 'Done'
-					puts "One state at a time: update the states you want to revisit."
-					puts "Type 'done' to quit."
-					update_answer = gets.chomp.downcase.capitalize!
-					update_return(update_answer, db)
-				end
-			else update_answer == 4
-				puts "Invalid"
 			end
 		else
 			puts "Type done if you'd like to exit."
 		end
+	puts "**#**SUMMARY**#**"
+	puts "You've visited:"
+	puts show_visited(db)
+	puts "You would like to visit:"
+	puts show_wanted(db)
+	puts "You would like to revisit:"
+	puts show_return(db)
 	end
 end
 
 puts "Goodbye."
-# puts <<-TEXT
-# You've been to #{db.execute(SELECT state_name FROM visited_map)},
-# would like to revisit #{db.execute(SELECT state_name FROM return_map)},
-# & have never been to #{db.execute(SELECT state_name FROM default_map)}.
-# TEXT 
