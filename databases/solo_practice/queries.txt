@@ -1,0 +1,31 @@
+1.) Display the information in one table (either table is fine).
+
+SELECT * FROM pets;
+
+1|Mr Whiskers|true|2
+2|Duke|true|1
+3|Sally|false|3
+
+2.) Update an item that meets some condition (choose a condition that makes sense).
+
+UPDATE pets SET hairy="false" WHERE name="Mr Whiskers";
+
+3.) Display the information in both tables using one query.
+
+SELECT * FROM pets, types WHERE pets.type = types.id;
+
+1|Mr Whiskers|false|2|2|cat
+2|Duke|true|1|1|dog
+3|Sally|false|3|3|snake
+
+4.) Display a narrower selection of columns (fewer columns, in other words) from both tables using one query.
+
+SELECT pets.name, types.species FROM pets, types WHERE pets.type = types.id;
+
+Mr Whiskers|cat
+Duke|dog
+Sally|snake
+
+5.) Delete an item that meets some condition (choose a condition that makes sense).
+
+DELETE FROM pets WHERE name = "Sally";
