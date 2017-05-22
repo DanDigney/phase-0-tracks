@@ -77,16 +77,16 @@ def show_return(db)
 	db.execute("SELECT state_name FROM return_map")
 end
 
-# Programing flaw, but it's assumed the user is aware of limits
-puts "This program requires correctly spelled state names."
+
+puts "This program does not handle user error."
+puts "This program assumes correct spelling."
 # Will result in an error if there is no previous data
 puts "Is this a new map, or would you like to reset your data?"
 fresh_start = gets.chomp.downcase
 if fresh_start == 'yes'
-	# Drop the old tables
-	# Mild problem here: if this a genuine first run
-	# An error occurs because it can't delete data that
-	# Isn't there, so I've add their calls
+	# Drop the old tables 
+	# Mild problem here: if this a genuine first run, an error occurs
+	# It can't delete data that isn't there, so I've add their calls
 	db.execute(make_default_table)
 	db.execute(make_visited_table)
 	db.execute(make_return_table)
@@ -95,10 +95,8 @@ if fresh_start == 'yes'
 	db.execute("DROP TABLE visited_map")
 	db.execute("DROP TABLE wanted_map")
 	db.execute("DROP TABLE return_map")
-	# Create & populate the default table
 	db.execute(make_default_table)
 	populate_default_map(states_array, db)
-	# Create visited table
 	puts "What state do you live in?"
 	home_state = gets.chomp.downcase.capitalize!
 	db.execute(make_visited_table)
@@ -120,16 +118,12 @@ if question == 'yes'
 		# Create loop options
 		if question == 'view'
 			until question == 5
-				show_visited_map = db.execute("SELECT state_name FROM visited_map")
-				show_wanted_map = db.execute("SELECT state_name FROM wanted_map")
-				show_return_map = db.execute("SELECT state_name FROM return_map")
-				show_default_map = db.execute("SELECT state_name FROM default_map")
 				puts "View: (Enter number)"
 				puts "1: States you've visited."
 				puts "2: States you want to visit."
 				puts "3: States you want to revisit."
 				puts "4: States you've never visited."
-				puts "5: Exit (Only way to leave)"
+				puts "5: Exit. (Only way to leave)"
 				question = gets.chomp.to_i
 				if question == 1
 					puts show_visited(db)
@@ -174,6 +168,7 @@ if question == 'yes'
 		else
 			puts "Type done if you'd like to exit."
 		end
+	end
 	puts "**#**SUMMARY**#**"
 	puts "You've visited:"
 	puts show_visited(db)
@@ -181,7 +176,6 @@ if question == 'yes'
 	puts show_wanted(db)
 	puts "You would like to revisit:"
 	puts show_return(db)
-	end
 end
 
 puts "Goodbye."
