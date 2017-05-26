@@ -24,4 +24,7 @@ post '/students' do
   redirect '/'
 end
 
-# add static resources
+get '/campus/new' do
+  @students = db.execute('SELECT * FROM students')
+  erb :campus
+end

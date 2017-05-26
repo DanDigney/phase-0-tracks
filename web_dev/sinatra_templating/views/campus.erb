@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Student Campus Placement</title>
+  <link rel=“stylesheet” href=“styles.css”>
+</head>
+<body>
+  <h1>Student Campus locater </h1>
+  <p>Welcome to the campus.</p>
+  <p>Click <a href='/'>here</a> to go to home page.</p>
+  <p>Click <a href='/students/new'>here</a> to create a new student campus placement generator.</p>
+  <ul>
+    <% @students.each do |student| %>
+      <li><%= student['name'] %>, <%= student['campus'] %></li>
+    <% end %>
+  </ul>
+</body>
+</html>
